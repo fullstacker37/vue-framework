@@ -1,32 +1,39 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="left">
+      <main-menu></main-menu>
     </div>
-    <router-view/>
+    <div class="right">
+      <main-tabs></main-tabs>
+    </div>
   </div>
 </template>
 
+<script>
+import mainMenu from "./components/menu.vue";
+import mainTabs from "./components/tabs";
+
+export default {
+  name: "App",
+  components: {
+    mainMenu,
+    mainTabs
+  },
+  data() {
+    return {};
+  },
+  created() {}
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+$menuWidth: 300px;
+.left {
+  width: $menuWidth;
+  float: left;
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.right {
+  width: calc(100% - $menuWidth);
+  float: left;
 }
 </style>
